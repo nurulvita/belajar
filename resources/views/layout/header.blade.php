@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.118.2">
-    <title>form</title>
+    <title>perpustakaan</title>
     <!-- <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;">
     </canvas> -->
 

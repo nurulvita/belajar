@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col">
         <h1>Form Tambah Biodata</h1>
-        <form action="{{ route('biodata.store') }}" method="POST">
+        <form action="{{ route('biodata.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="nama" class="form-label">Nama</label>
@@ -35,6 +35,11 @@
                     {{$message}}
                     </div>
                 @enderror
+              </div>
+              <div class="mb-3">
+                <label for="phone" class="form-label">Image</label>
+                <input name="image" type="file" class="form-control" id="phone" name="phone" value="{{ old('image')}}">
+                <div id="telp" class="form-text"></div>
               </div>
 
             <button type="submit" class="btn btn-primary">Simpan</button>

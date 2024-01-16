@@ -25,17 +25,26 @@ class BiodataController extends Controller
             'email' => 'required',
             'alamat' => 'required',
             'no_hp' => 'required|numeric',
-            'kota' => 'required'
+            'kota' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
         // Biodata::create($bio); /cara 1
         // Biodata::create($request->all()); //cara 2
+        if ($image = $request->file('image')) {
+            $destionationPath = 'image/';
+            $profileImage = date('YmdHis').'.'.$request->file('image')->getClientOriginalName();
+            $image->move($destionationPath, $profileImage);
+            $bio['image'] = "$profileImage";
+        }
+
         Biodata::create([
             'nama' => $request->nama,
             'email' => $request->email,
             'alamat' => $request->alamat,
             'no_hp' => $request->no_hp,
-            'kota' => $request->kota
+            'kota' => $request->kota,
+            'image' => $bio['image']
         ]); //cara 3
 
         // return redirect('/biodata')->with('berhasil', 'Data Tersimpan'); //url
@@ -49,7 +58,17 @@ class BiodataController extends Controller
 
     public function update(Request $request, $id){
         $bio = Biodata::find($id);
-        $bio->update($request->all());
+        $input = $request->all();
+        if ($image = $request->file('image')) {
+            $destionationPath = 'image/';
+            $profileImage = date('YmdHis').'.'.$request->file('image')->getClientOriginalName();
+            $image->move($destionationPath, $profileImage);
+            $input['image'] = "$profileImage";
+        } else{
+            unset($input['image']);
+        }
+
+        $bio->update($input);
         return redirect()->route('biodata.index')->with('berhasil', 'Data Terupdate');
     }
 

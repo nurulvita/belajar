@@ -1,0 +1,40 @@
+@extends('layout.header')
+
+@section('content')
+
+<div class="container">
+<div class="row">
+    <div class="col">
+        <h1>Form Edit User</h1>
+        <form action="{{ route('user.update', $user->id) }}" method="POST">
+            @csrf
+            @method('put')
+
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input name="name" type="text" class="form-control" id="name" value="{{ $user->name}}" required>
+                <div id="name" class="form-text"></div>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input name="email" type="email" class="form-control" id="email" value="{{ $user->email}}" required>
+                <div id="email" class="form-text"></div>
+                @error('email')
+                <div class="alert alert-danger mt-2">
+                {{$message}}
+                </div>
+                @enderror
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input name="password" type="password" class="form-control" id="password">
+                <div id="password" class="form-text"></div>
+            </div>
+
+            <button type="submit" class="btn btn-outline-primary">Simpan</button>
+            <button type="reset" class="btn btn-outline-warning">Reset</button>
+
+    </div>
+</div>
+
+@endsection

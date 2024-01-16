@@ -30,6 +30,7 @@
                 <th scope="col">alamat</th>
                 <th scope="col">no hp</th>
                 <th scope="col">kota</th>
+                <th scope="col">gambar</th>
                 <th scope="col">aksi</th>
               </tr>
             </thead>
@@ -43,6 +44,7 @@
                 <td>{{$value->alamat}}</td>
                 <td>{{$value->no_hp}}</td>
                 <td>{{$value->kota}}</td>
+                <td><img src="{{ asset('image/'.$value->image) }}" alt="" width="100"></td>
                 <td>
 
                     <a href="{{ route('biodata.edit', $value->id) }}" class="btn btn-warning">Edit</a>

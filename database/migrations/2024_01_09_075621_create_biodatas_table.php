@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('alamat')->nullable();
             $table->bigInteger('no_hp')->nullable();
             $table->string('kota')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

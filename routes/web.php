@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\BiodataController;
 use App\Http\Controllers\PeminjamController;
 use App\Http\Controllers\BukuDetailController;
+use App\Http\Controllers\LokasiBukuController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/user', UserController::class);
 
     Route::resource('/peminjam', PeminjamController::class);
+    Route::resource('/lokasi', LokasiBukuController::class);
+
 });
 
 
@@ -50,5 +53,6 @@ Auth::routes([
     'reset' => false,
     'verify' => false
 ]);
+
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

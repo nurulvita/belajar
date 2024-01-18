@@ -41,7 +41,7 @@ class LokasiBukuController extends Controller
             'section' => $request->section
         ]);
 
-        return view('/lokasi')->with('berhasil', 'Data Tersimpan');
+        return redirect('/lokasi')->with('berhasil', 'Data Tersimpan');
     }
 
     /**
@@ -55,26 +55,26 @@ class LokasiBukuController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(LokasiBuku $lokasiBuku)
+    public function edit(LokasiBuku $lokasi)
     {
-        return view('lokasi.edit', compact('lokasiBuku'));
+        return view('lokasi.edit', compact('lokasi'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, LokasiBuku $lokasiBuku)
+    public function update(Request $request, LokasiBuku $lokasi)
     {
-        $lokasiBuku->update($request->all());
+        $lokasi->update($request->all());
         return redirect()->route('lokasi.index')->with('berhasil', 'Data Terupdate');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(LokasiBuku $lokasiBuku)
+    public function destroy(LokasiBuku $lokasi)
     {
-        $lokasiBuku->delete();
+        $lokasi->delete();
         return redirect()->route('lokasi.index')->with('berhasil', 'Data Terhapus');
     }
 }

@@ -10,7 +10,7 @@
             @csrf
             <div class="mb-3">
                 <label for="kode_buku" class="form-label">Kode Buku</label>
-                <input name="kode_buku" type="text" class="form-control" id="nama" value="{{ old('kode_buku')}}" required>
+                <input name="kode_buku" type="text" class="form-control" id="kode_buku" value="{{ old('kode_buku')}}" required>
                 <div id="kode_buku" class="form-text"></div>
                 @error('kode_buku')
                 <div class="alert alert-danger mt-2">
@@ -20,17 +20,22 @@
             </div>
             <div class="mb-3">
                 <label for="no_rak" class="form-label">No Rak</label>
-                <input name="no_rak" type="text" class="form-control" id="no_rak" value="{{ old('no_rak')}}" required>
-                <div id="no_rak" class="form-text"></div>
+                <select class="form-select form-select-sm" aria-label="Small select example" id="no_rak" name="no_rak" required>
+                    <option value="" disabled selected>Pilih Lokasi Buku</option>
+                    <option value="A1" @if(old('no_rak') == 'A1') selected @endif>A1</option>
+                    <option value="B1" @if(old('no_rak') == 'B1') selected @endif>B1</option>
+                    <option value="C1" @if(old('no_rak') == 'C1') selected @endif>C1</option>
+                </select>
                 @error('no_rak')
-                <div class="alert alert-danger mt-2">
-                {{$message}}
-                </div>
+                    <div class="alert alert-danger mt-2">
+                        {{ $message }}
+                    </div>
                 @enderror
             </div>
+
             <div class="mb-3">
                 <label for="section" class="form-label">Section</label>
-                <input name="section" type="date" class="form-control" id="penerbit" value="{{ old('section')}}" required>
+                <input name="section" type="text" class="form-control" id="penerbit" value="{{ old('section')}}" required>
                 <div id="section" class="form-text"></div>
             </div>
             <button type="submit" class="btn btn-success">Simpan</button>

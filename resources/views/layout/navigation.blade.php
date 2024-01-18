@@ -15,6 +15,20 @@
           <li class="nav-item">
             <a class="nav-link" href="{{url('/user')}}">User</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url('/peminjam')}}">Peminjam</a>
+          </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+            {{ __('Logout') }}
+        </a>
+
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+        </form>
+          </li>
         </ul>
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Cari" aria-label="Search">

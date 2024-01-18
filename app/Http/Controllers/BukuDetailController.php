@@ -18,7 +18,7 @@ class BukuDetailController extends Controller
     }
 
     public function store(Request $request){
-        // dd($request->all());
+        dd($request->all());
       $buku=  $request->validate([
             'judul' => 'required',
             'penerbit' => 'required',

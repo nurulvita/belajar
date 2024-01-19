@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Peminjam;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PeminjamController extends Controller
 {
@@ -84,5 +85,19 @@ class PeminjamController extends Controller
         $peminjam = Peminjam::find($id);
         $peminjam->delete();
         return redirect()->route('peminjam.index')->with('berhasil', 'Data Terhapus');
+    }
+
+    public function cari(Request $request){
+        // dd($request->all());
+        $awal = request()->awal;
+        $akhir = request()->akhir;
+        if ($request->laporan == 1){
+            $peminjam = Peminjam::whereBetween('tanggal_pinjam', [$awal, $akhir])->get();
+            $pdf= Pdf::loadView('laporan.peminjam', compact('peminjam'));
+            return $pdf->stream();
+        }else{
+            $peminjam = Peminjam::whereBetween('tanggal_pinjam', [$awal, $akhir])->paginate(4);
+            return view('peminjam.index', compact('peminjam'));
+        }
     }
 }

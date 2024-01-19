@@ -22,6 +22,16 @@
     </div>
     <div class="row mt-3">
         <div class="col">
+            <p>Cari Buku</p>
+            <form action="{{ route('lokasi.cari') }}" method="POST">
+                @csrf
+                <input type="text" name="cari" placeholder="Cari Kode Buku" value="{{ old('cari')}}">
+                <input type="submit" value="Cari">
+            </form>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col">
             <table class="table">
                 <thead>
                   <tr>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BukuDetail;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class BukuDetailController extends Controller
 {
@@ -51,5 +52,12 @@ class BukuDetailController extends Controller
         return redirect()->route('buku.index')->with('berhasil', 'Data Terhapus');
     }
 
+    public function laporan(){
+        $buku = BukuDetail::orderBy('id', 'asc')->get();
+        // dd($bio);
+        // return view('laporan.buku', compact('buku'));
+        $pdf= Pdf::loadView('laporan.buku', compact('buku'));
+        return $pdf->stream();
+    }
 
 }

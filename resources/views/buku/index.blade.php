@@ -16,8 +16,12 @@
         </div>
     </div>
     <div class="row">
-        <div class="d-grid gap-2 col-6 mx-auto">
+        <div class="d-grid gap-2 col-2 mx-auto">
             <a href="{{ route('buku.create') }}" class="btn btn-success">Tambah Buku</a>
+        </div>
+        <div class="col-2">
+            <a href="{{ route('buku.laporan') }}" target="_blank" class="btn btn-success">Cetak Buku</a>
+
         </div>
     </div>
     <div class="row mt-3">

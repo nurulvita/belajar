@@ -39,11 +39,16 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/buku/{id}', [BukuDetailController::class, 'update'])->name('buku.update');
     Route::delete('/buku/{id}', [BukuDetailController::class, 'destroy'])->name('buku.destroy');
     Route::post('/buku/store', [BukuDetailController::class, 'store'])->name('buku.store');
+    Route::get('/buku/laporan', [BukuDetailController::class, 'laporan'])->name('buku.laporan',);
 
     Route::resource('/user', UserController::class);
 
     Route::resource('/peminjam', PeminjamController::class);
+    Route::post('/peminjam/cari', [PeminjamController::class, 'cari'])->name('peminjam.cari');
+    // Route::post('/peminjam/cari2', [PeminjamController::class, 'cari2'])->name('peminjam.cari2');
+
     Route::resource('/lokasi', LokasiBukuController::class);
+    Route::post('/lokasi/cari', [LokasiBukuController::class, 'cari'])->name('lokasi.cari');
 
 });
 

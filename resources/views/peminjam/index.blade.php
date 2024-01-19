@@ -21,6 +21,34 @@
         </div>
     </div>
     <div class="row mt-3">
+        <div class="col-3">
+            <p>Cari Tanggal Pinjam</p>
+
+            <form action="{{ route('peminjam.cari') }}" method="POST">
+                @csrf
+                <div class="mb-3">
+                    <label for="nama" class="form-label">Tanggal Awal</label>
+                    <input name="awal" type="date" class="form-control" id="nama" value="{{ old('awal')}}" required>
+                    <div id="cari" class="form-text"></div>
+                </div>
+                <div class="mb-3">
+                    <label for="nama" class="form-label">Tanggal Akhir</label>
+                    <input name="akhir" type="date" class="form-control" id="nama" value="{{ old('akhir')}}" required>
+                    <div id="cari" class="form-text"></div>
+                </div>
+                <div class="form-check">
+                    <input name="laporan" class="form-check-input" type="checkbox" value="1" id="flexCheckChecked">
+                    <label class="form-check-label" for="flexCheckChecked">
+                      Laporan
+                    </label>
+                  </div>
+                {{-- <input type="date" name="cari2" value="{{ old('cari')}}"> --}}
+                <input type="submit" value="Cari">
+            </form>
+        </div>
+    </div>
+
+    <div class="row mt-3">
         <div class="col">
             <table class="table">
                 <thead>

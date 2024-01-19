@@ -77,4 +77,13 @@ class LokasiBukuController extends Controller
         $lokasi->delete();
         return redirect()->route('lokasi.index')->with('berhasil', 'Data Terhapus');
     }
+
+    public function cari(Request $request)
+    {
+        // dd($request->cari);
+        $cari = $request->cari;
+        $lokasi = LokasiBuku::where('kode_buku', 'like', "%" . $cari . "%")->paginate(4);
+        // dd($lokasi);
+        return view('lokasi.index', compact('lokasi'));
+    }
 }
